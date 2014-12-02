@@ -10,7 +10,6 @@ namespace PersistenceLayer
     {
         static void Main(string[] args)
         {
-
         } 
     }
 }
