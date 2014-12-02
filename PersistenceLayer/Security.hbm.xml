@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="PersistenceLayer"
+                   namespace="PersistenceLayer.Entities">
+
+  <class name="UserDo" table="Users">
+    <id column="Id" name="Id" type="int">
+      <generator class="identity"/>
+    </id>
+    <property column="Id" name="Id" />
+    <property column="UserName" name="UserName" />
+    <property column="Password" name="Password" />
+  </class>
+
+</hibernate-mapping> 
