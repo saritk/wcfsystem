@@ -15,10 +15,31 @@ namespace ServiceImplementation
         /// Gets the users.
         /// </summary>
         /// <returns></returns>
+        readonly BusinessLogic _businessLogic = new BusinessLogic();
+
         public List<User> GetUsers()
         {
-            var businessLogic = new BusinessLogic();
-            return businessLogic.GetUsers();
+            return _businessLogic.GetUsers();
+        }
+
+        public User GetUserById(int id)
+        {
+            return _businessLogic.GetUserById(id);
+        }
+
+        public void DeleteUser(int id)
+        {
+            _businessLogic.DeleteUser(id);
+        }
+
+        public void UpdateUser(User user)
+        {
+            _businessLogic.UpdateUser(user);
+        }
+
+        public User CreateUser(User user)
+        {
+            return _businessLogic.CreateUser(user);
         }
     }
     //Kadosh.Security.PermissonsService

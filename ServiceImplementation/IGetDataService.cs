@@ -25,7 +25,7 @@ namespace ServiceImplementation
         void DeleteUser(int id);
 
         [OperationContract]
-        void UpdateUser(int id);
+        void UpdateUser(User user);
 
         [OperationContract]
         User CreateUser(User user);

@@ -75,7 +75,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceImplementation\ServiceImplementation.csproj">
+      <Project>{ed765396-2ed9-4c57-ad56-728b4815c637}</Project>
+      <Name>ServiceImplementation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -84,16 +89,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Security.BusinessLogic\Security.BusinessLogic.csproj">
-      <Project>{56448fb6-79f3-476c-bc55-60b7befc095e}</Project>
-      <Name>Security.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceImplementation\ServiceImplementation.csproj">
-      <Project>{ed765396-2ed9-4c57-ad56-728b4815c637}</Project>
-      <Name>ServiceImplementation</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

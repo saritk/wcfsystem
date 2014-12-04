@@ -24,7 +24,7 @@ namespace Contracts
         /// The name.
         /// </value>
         [DataMember]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// Gets the password.

@@ -53,8 +53,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
-      <Project>{F031DF5E-554A-4651-95BB-AF2108FA2B48}</Project>
+      <Project>{f031df5e-554a-4651-95bb-af2108fa2b48}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security.BusinessLogic\Security.BusinessLogic.csproj">
