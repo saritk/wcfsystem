@@ -1,71 +1,96 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
 using Contracts;
 using NHibernate;
-using NHibernate.Cfg;
 using PersistenceLayer.Entities;
 
 namespace PersistenceLayer
 {
+    /// <summary>
+    /// C R U D operations for users
+    /// </summary>
     public class UserRepository
     {
-        private readonly ISessionFactory _sessionFactory;
-
-        public UserRepository()
-        {
-            //***** Configure Nhibernate ******************
-            var nhConfig = new Configuration().Configure();
-            nhConfig.AddAssembly(Assembly.GetExecutingAssembly());
-
-            _sessionFactory = nhConfig.BuildSessionFactory();
-        }
-
+        /// <summary>
+        /// Gets the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public UserDo GetUser(int id)
         {
             //***** Read ******************************
-            using (ISession session = _sessionFactory.OpenSession())
+            using (ISession session = NHibernateHelper.OpenSession())
             {
                 return session.QueryOver<UserDo>().Where(x => x.Id == id).SingleOrDefault();
             }
         }
 
+        /// <summary>
+        /// Gets all users.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<UserDo> GetUsers()
         {
-            using (ISession session = _sessionFactory.OpenSession())
+            using (ISession session = NHibernateHelper.OpenSession())
             {
                 return session.QueryOver<UserDo>().List();
             }
         }
 
-        public void DeleteUser(int userId)
+        /// <summary>
+        /// Deletes the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        public void DeleteUser(User user)
         {
-            using (ISession session = _sessionFactory.OpenSession())
+            using (ISession session = NHibernateHelper.OpenSession())
             {
-                var removeUser = new UserDo {Id = userId};
-                session.Delete(removeUser);
-            }
-        }
-
-        public void UpdateUser(User user)
-        {
-            using (ISession session = _sessionFactory.OpenSession())
-            {
-                var model = new UserDo {Id = user.Id, UserName = user.UserName, Password = user.Password};
-                session.Update(model);
-            }
-        }
-
-        public UserDo CreateUser(User user)
-        {
-            using (ISession session = _sessionFactory.OpenSession())
-            {
-                using (var tx = session.BeginTransaction())
+                using (var transaction = session.BeginTransaction())
                 {
-                    var model = new UserDo {Id = user.Id, UserName = user.UserName, Password = user.Password};
-                    return session.Save(model) as UserDo;
+                    var removeUser = new UserDo {Id = user.Id, UserName = user.UserName, Password = user.Password};
+                    session.Delete(removeUser);
+                    transaction.Commit();
                 }
             }
         }
+
+        /// <summary>
+        /// Updates the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        public void UpdateUser(User user)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var model = new UserDo {Id = user.Id, UserName = user.UserName, Password = user.Password};
+                    session.Update(model);
+                    transaction.Commit();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
+        public UserDo CreateUser(User user)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var model = new UserDo {UserName = user.UserName, Password = user.Password};
+
+                    session.Save(model);
+                    transaction.Commit();
+                    session.Flush();
+
+                    return model; 
+                }
+            }
+        
         }
     }
 }

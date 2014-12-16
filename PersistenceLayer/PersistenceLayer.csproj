@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NHibernateHelper.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Entities\UserDo.cs" />
     <Compile Include="Program.cs" />
@@ -66,7 +67,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Security.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Security.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj">

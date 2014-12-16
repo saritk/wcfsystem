@@ -4,10 +4,9 @@
                    namespace="PersistenceLayer.Entities">
 
   <class name="UserDo" table="Users">
-    <id column="Id" name="Id" type="int">
+    <id column="Id" name="Id" type="int" unsaved-value="0">
       <generator class="identity"/>
     </id>
-    <property column="Id" name="Id" />
     <property column="UserName" name="UserName" />
     <property column="Password" name="Password" />
   </class>
