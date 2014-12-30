@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
+using Security.BusinessLogic;
 using Component = Castle.MicroKernel.Registration.Component;
 
 namespace PersistenceLayer
@@ -23,7 +24,9 @@ namespace PersistenceLayer
 
         public virtual void RegisterServiceComponents()
         {
-            _container.Register(Component.For<IUserRepository>().ImplementedBy<UserRepository>().LifeStyle.Transient);
+            _container.Register(Component.For<IUserRepository>().ImplementedBy<UserRepository>().LifeStyle.Transient,
+                Component.For<IBusinessLogic>().ImplementedBy<BusinessLogic>().LifeStyle.Transient,
+                Component.For<INHibernateHelper>().ImplementedBy<INHibernateHelper>().LifeStyle.Transient);
         }
 
         //public void Register()

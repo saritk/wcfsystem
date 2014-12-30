@@ -15,10 +15,17 @@ namespace PersistenceLayer
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
+        private INHibernateHelper _nHibernateHelper;
+
+        public UserRepository(INHibernateHelper nHibernateHelper)
+        {
+            _nHibernateHelper = nHibernateHelper;
+        }
+
         public UserDo GetUser(int id)
         {
             //***** Read ******************************
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (ISession session = _nHibernateHelper.OpenSession())
             {
                 return session.QueryOver<UserDo>().Where(x => x.Id == id).SingleOrDefault();
             }
@@ -30,7 +37,7 @@ namespace PersistenceLayer
         /// <returns></returns>
         public IEnumerable<UserDo> GetUsers()
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (ISession session = _nHibernateHelper.OpenSession())
             {
                 return session.QueryOver<UserDo>().List();
             }
@@ -42,7 +49,7 @@ namespace PersistenceLayer
         /// <param name="user">The user.</param>
         public void DeleteUser(User user)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (ISession session = _nHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
@@ -59,7 +66,7 @@ namespace PersistenceLayer
         /// <param name="user">The user.</param>
         public void UpdateUser(User user)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (ISession session = _nHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
@@ -77,7 +84,7 @@ namespace PersistenceLayer
         /// <returns></returns>
         public UserDo CreateUser(User user)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (ISession session = _nHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
@@ -93,4 +100,5 @@ namespace PersistenceLayer
         
         }
     }
+
 }

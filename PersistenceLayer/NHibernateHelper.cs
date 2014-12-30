@@ -7,26 +7,28 @@ namespace PersistenceLayer
     /// <summary>
     /// Configure Nhibernate 
     /// </summary>
-    public class NHibernateHelper
+    public class NHibernateHelper : INHibernateHelper
     {
-        private static ISessionFactory _sessionFactory;
-
+        private ISessionFactory _sessionFactory;
+        
+        //public NHibernateHelper(ISessionFactory sessionFactory)
+        //{
+        //    _sessionFactory = sessionFactory;
+        //}
+        
         /// <summary>
         /// Gets the session factory.
         /// </summary>
         /// <value>
         /// The session factory.
         /// </value>
-        private static ISessionFactory SessionFactory
+        public ISessionFactory SessionFactory
         {
             get
             {
-                if (_sessionFactory == null)
-                {
-                    var configuration = new Configuration().Configure();
-                    configuration.AddAssembly(Assembly.GetExecutingAssembly());
-                    _sessionFactory = configuration.BuildSessionFactory();
-                }
+                var configuration = new Configuration().Configure();
+                configuration.AddAssembly(Assembly.GetExecutingAssembly());
+                _sessionFactory = configuration.BuildSessionFactory();
                 return _sessionFactory;
             }
         }
@@ -35,9 +37,18 @@ namespace PersistenceLayer
         /// Opens the session.
         /// </summary>
         /// <returns></returns>
-        public static ISession OpenSession()
+        public ISession OpenSession()
         {
             return SessionFactory.OpenSession();
         }
     }
+
+    public interface INHibernateHelper
+    {
+        ISessionFactory SessionFactory { get; }
+        ISession OpenSession();
+
+    }
+
+    
 }

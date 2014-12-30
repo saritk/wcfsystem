@@ -11,14 +11,12 @@ namespace ServiceImplementation
     /// </summary>
     public class GetDataService : IGetDataService
     {
-        readonly BusinessLogic _businessLogic = new BusinessLogic();
+        private readonly IBusinessLogic _businessLogic;
 
-
-        public GetDataService()
+        public GetDataService(IBusinessLogic businessLogic)
         {
-
+            _businessLogic = businessLogic;
         }
-
 
         /// <summary>
         /// Gets all users exists.
