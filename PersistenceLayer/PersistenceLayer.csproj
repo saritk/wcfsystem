@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IUserRepository.cs" />
+    <Compile Include="RegisterDependencyForSystem.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Entities\UserDo.cs" />

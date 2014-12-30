@@ -8,7 +8,7 @@ namespace PersistenceLayer
     /// <summary>
     /// C R U D operations for users
     /// </summary>
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         /// <summary>
         /// Gets the user.

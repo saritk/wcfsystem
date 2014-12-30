@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Contracts;
 using PersistenceLayer;
@@ -10,7 +11,7 @@ namespace Security.BusinessLogic
     /// </summary>
     public class BusinessLogic
     {
-        readonly UserRepository _repository = new UserRepository();
+        readonly UserRepository _repository = Container.Resolve
 
         /// <summary>
         /// Gets the user by identifier.

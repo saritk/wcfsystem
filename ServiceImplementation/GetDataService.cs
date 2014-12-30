@@ -13,6 +13,13 @@ namespace ServiceImplementation
     {
         readonly BusinessLogic _businessLogic = new BusinessLogic();
 
+
+        public GetDataService()
+        {
+
+        }
+
+
         /// <summary>
         /// Gets all users exists.
         /// </summary>
