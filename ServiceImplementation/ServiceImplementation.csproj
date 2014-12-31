@@ -41,10 +41,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyInjection\DependencyInjectionInstanceProvider.cs" />
+    <Compile Include="DependencyInjection\ExampleServiceHostFactory.cs" />
+    <Compile Include="DependencyInjection\DependencyInjectionServiceHostFactory.cs" />
+    <Compile Include="DependencyInjection\DependencyInjectionServiceBehavior.cs" />
+    <Compile Include="DependencyInjection\DependencyInjectionServiceHost.cs" />
     <Compile Include="GetDataService.cs" />
     <Compile Include="IGetDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +65,14 @@
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{f031df5e-554a-4651-95bb-af2108fa2b48}</Project>
       <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{A7D57CA9-37BC-4834-939E-C7CFFAFCB3B1}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersistenceLayer\PersistenceLayer.csproj">
+      <Project>{7C666B34-7A31-418D-85D5-330FD8B62EDC}</Project>
+      <Name>PersistenceLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security.BusinessLogic\Security.BusinessLogic.csproj">
       <Project>{56448fb6-79f3-476c-bc55-60b7befc095e}</Project>

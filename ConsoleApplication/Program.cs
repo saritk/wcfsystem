@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Castle.Windsor;
-using PersistenceLayer;
+using Infrastructure;
 
 namespace ConsoleApplication
 {
@@ -13,7 +13,7 @@ namespace ConsoleApplication
         static void Main(string[] args)
         {
             var container = new WindsorContainer();
-            var regisretedComponent = new RegisterDependencyForSystem(container);
+            var regisretedComponent = new DependencyFactory(container);
             regisretedComponent.RegisterServiceComponents();
 
         }
