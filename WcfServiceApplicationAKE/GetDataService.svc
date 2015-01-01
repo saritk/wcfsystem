@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="ServiceImplementation.GetDataService" Factory="ServiceImplementation.DependencyInjection.ExampleServiceHostFactory" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ServiceImplementation.GetDataService" Factory="ServiceImplementation.DependencyInjection.UserRepositoryServiceHostFactory" %>

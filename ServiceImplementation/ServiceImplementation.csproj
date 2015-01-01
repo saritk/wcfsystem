@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyInjection\DependencyInjectionInstanceProvider.cs" />
-    <Compile Include="DependencyInjection\ExampleServiceHostFactory.cs" />
+    <Compile Include="DependencyInjection\UserRepositoryServiceHostFactory.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionServiceHostFactory.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionServiceBehavior.cs" />
     <Compile Include="DependencyInjection\DependencyInjectionServiceHost.cs" />

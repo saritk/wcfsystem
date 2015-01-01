@@ -32,7 +32,7 @@ namespace Security.UnitTests.DataAccess.PersistenceLayer
             //Arrange
             const int userId = 1;
             var expectedUser = new UserDo {Id = userId, Password = "123", UserName = "sara"};
-            _sessionMock.Setup(o => o.QueryOver<UserDo>()).Returns((expectedUser));
+           // _sessionMock.Setup(o => o.QueryOver<UserDo>()).Returns((expectedUser));
         
             //Act
             var target = new UserRepository(_nHibernateHelperMock.Object);
